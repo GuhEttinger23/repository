@@ -1,0 +1,12 @@
+:root {
+  --orange: #FF6A00;
+  --black: #0B0B0B;
+  --white: #FFFFFF;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--white);
+  background: var(--black);
+  margin: 0;
+  padding: 0;
+}
