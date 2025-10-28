@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creat Hub - Adicionar Projeto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">Creat<span>Hub</span> Portfolio</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">PÁGINA INICIAL</a></li>
+                    <li><a href="courses.html">CURSOS</a></li>
+                    <li><a href="portfolio.html">PROJETOS</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <input type="search" class="search-bar" placeholder="Pesquisar projetos">
+                <a href="add-project.html" class="btn btn-primary">+ ADICIONAR PROJETO</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="form-container">
+            <h1>CADASTRAR NOVO PORTFÓLIO</h1>
+            <p>Compartilhe sua criação com a comunidade.</p>
+
+            <form action="#">
+                <div class="form-group">
+                    <label for="project-name">Nome do Projeto</label>
+                    <input type="text" id="project-name" name="project-name" placeholder="Ex: App de Realidade Aumentada">
+                </div>
+
+                <div class="form-group">
+                    <label for="project-category">Categoria do Projeto</label>
+                    <select id="project-category" name="project-category">
+                        <option value="">Selecione uma Categoria</option>
+                        <option value="design">Design</option>
+                        <option value="web-dev">Desenvolvimento Web</option>
+                        <option value="3d">3D Modeling</option>
+                        <option value="branding">Branding</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cover-image">Imagem de Capa do Portfólio</label>
+                    <input type="file" id="cover-image" name="cover-image">
+                </div>
+
+                <div class="form-group">
+                    <label for="collaborator">Quem Participou do Projeto?</label>
+                    <input type="text" id="collaborator" name="collaborator" placeholder="Seu Nome">
+                    <button type="button" class="btn btn-secondary">Adicionar Colaborador</button>
+                </div>
+
+                 <div class="form-group">
+                    <label for="step-name">Etapas e Responsáveis</label>
+                    <input type="text" id="step-name" name="step-name" placeholder="Nome da Etapa (Ex: Wireframing)">
+                    <button type="button" class="btn btn-secondary">Adicionar Etapa</button>
+                </div>
+
+                <button type="submit" class="btn btn-primary form-submit-btn">CRIAR PORTFÓLIO</button>
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>

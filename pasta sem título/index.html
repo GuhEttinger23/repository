@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mazzo Drones: produção audiovisual aérea 4K para eventos, turismo, esportes e publicidade. Equipe certificada ANAC/DECEA. Solicite orçamento.">
+  <title>MAZZO Drones — Capturando emoções do alto</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo="> <style>
+    /* Core visual: paleta laranja (#FF6A00), preto, branco */
+    :root{--orange:#FF6A00;--black:#0B0B0B;--white:#FFFFFF;--gray:#1F1F1F;--max-width:1200px}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; color:var(--white);background:linear-gradient(180deg,#000 0%, #070707 100%);}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
+
+    /* Header */
+    header{position:fixed;left:0;right:0;top:0;z-index:60;backdrop-filter:blur(6px);background:linear-gradient(180deg, rgba(11,11,11,0.6), rgba(11,11,11,0.3));border-bottom:1px solid rgba(255,255,255,0.03)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;gap:12px;align-items:center}
+    /* Estilo para a imagem do logo */
+    .brand .logo-img {
+      height: 70px; /* Mesma altura que o antigo "M" */
+      width: auto; /* Mantém a proporção da imagem */
+      vertical-align: middle; /* Alinha verticalmente com o texto */
+    }
+    nav ul{display:flex;gap:18px;align-items:center;list-style:none;margin:0;padding:0}
+    nav li{font-size:14px;color:rgba(255,255,255,0.85)}
+    nav li a { cursor: pointer; } /* Garante que os links pareçam clicáveis */
+    .cta-ghost{padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.08)}
+    .cta-primary{background:var(--orange);color:var(--black);padding:10px 16px;border-radius:10px;font-weight:600; cursor: pointer;} /* Adicionado cursor pointer */
+
+    /* Hero */
+    .hero{
+      min-height:80vh;
+      display:grid;
+      align-items:center;
+      padding-top:64px;
+      /* Background da imagem */
+      background-image: url('./img/Fundo.jpg'); /* Link da imagem que você enviou */
+      background-size: cover;
+      background-position: center bottom; /* Ajustado para mostrar mais das montanhas */
+      background-repeat: no-repeat;
+      position: relative; /* Para o overlay */
+      overflow: hidden; /* Garante que nada transborde */
+    }
+    /* Overlay para o hero */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%); /* Escurece a imagem e melhora contraste */
+      z-index: 1; /* Fica acima da imagem, mas abaixo do conteúdo */
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr; /* Removido a coluna da mídia, só o conteúdo de texto */
+      gap:48px;
+      align-items:center;
+      position: relative; /* Para ficar acima do overlay */
+      z-index: 2; /* Acima do overlay */
+    }
+    .hero-copy h1{font-size:48px;margin:0 0 12px;line-height:1.02;color:var(--white)}
+    .hero-copy p{margin:0 0 18px;color:rgba(255,255,255,0.9);font-size:18px}
+    .hero-cta{display:flex;gap:12px}
+    .hero-cta button { cursor: pointer; } /* Adicionado cursor pointer */
+    /* Remove a seção de mídia que antes continha o vídeo/imagem */
+    .hero-media { display: none; }
+    .hero-face { display: none; }
+
+    /* Sections */
+    section{padding:64px 0;border-top:1px solid rgba(255,255,255,0.02)}
+    h2.section-title{color:var(--orange);font-size:20px;margin:0 0 14px}
+    h3{margin:0 0 10px;color:var(--white)}
+    p.lead{color:rgba(255,255,255,0.85)}
+
+    /* Services grid */
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .card .icon{width:56px;height:56px;border-radius:12px;background:rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;font-weight:700}
+
+    /* Portfolio */
+    .portfolio-controls{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+    .filter-btn{padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.03);cursor:pointer}
+    .grid-portfolio{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+    .thumb{position:relative;border-radius:10px;overflow:hidden;cursor:pointer}
+    .thumb img{width:100%;height:220px;object-fit:cover;display:block}
+    .thumb .meta{position:absolute;left:12px;bottom:12px;background:linear-gradient(90deg,rgba(0,0,0,0.6),transparent);padding:8px 10px;border-radius:8px}
+
+    /* Testimonials */
+    .testimonials{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .testimonial{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.2));border:1px solid rgba(255,255,255,0.02)}
+
+    /* Pricing */
+    .pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .price-card{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);text-align:center}
+    .price-card.recommended{transform:translateY(-10px);box-shadow:0 20px 50px rgba(0,0,0,0.6);border:2px solid rgba(255,106,0,0.9)}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 380px;gap:24px}
+    form .field{display:flex;flex-direction:column;margin-bottom:12px}
+    input,textarea,select{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--white)}
+    button[type=submit]{background:var(--orange);color:var(--black);padding:12px 16px;border-radius:10px;border:0;font-weight:700; cursor: pointer;} /* Adicionado cursor pointer */
+
+    /* Footer */
+    footer{padding:28px 0;color:rgba(255,255,255,0.65)}
+
+    /* Sticky CTA */
+    .sticky-cta{position:fixed;right:18px;bottom:18px;z-index:80}
+
+    /* Responsive */
+    @media(max-width:980px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero-copy h1{font-size:34px}
+      .hero-media{height:280px}
+      .contact-grid{grid-template-columns:1fr}
+      .testimonials{grid-template-columns:1fr}
+      nav ul{display:none} /* O menu principal é ocultado em telas menores */
+    }
+  </style>
+</head>
+<body id="navbar"> <header>
+  <div class="container nav">
+    <div class="brand">
+      <img src="./img/marca2.png" alt="MAZZO Drones Logo" class="logo-img">
+      <div>
+        <div style="font-weight:700">MAZZO Drones</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px">Capturando emoções do alto</div>
+      </div>
+    </div>
+    
+    <nav>
+      <ul>
+        <li><a onclick="scrollToSection('navbar')">Início</a></li>
+        <li><a onclick="scrollToSection('services')">Serviços</a></li>
+        <li><a onclick="scrollToSection('portfolio')">Portfólio</a></li>
+        <li><a onclick="scrollToSection('clients')">Parcerias</a></li>
+        <li><a onclick="scrollToSection('clients')">Depoimentos</a></li>
+        <li><a onclick="scrollToSection('contact')">Contato</a></li>
+      </ul>
+    </nav>
+    
+    <div style="display:flex;gap:10px;align-items:center">
+      <div class="cta-ghost" onclick="scrollToSection('portfolio')" style="cursor: pointer;">Portfólio</div>
+      <div class="cta-primary" onclick="openDroneVideo()">Drones</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1>Capturando emoções do alto.</h1>
+        <p class="lead">Produção audiovisual com drones — imagens 4K que transformam a percepção da sua marca e geram engajamento mensurável.</p>
+        <div class="hero-cta">
+          <button class="cta-primary" onclick="openDroneVideo()">Drones</button>
+          <button class="cta-ghost" onclick="openCasebook()">Baixe nosso Casebook</button>
+        </div>
+        <div style="margin-top:18px;color:rgba(255,255,255,0.7);font-size:14px">Equipe certificada ANAC / DECEA • Atendimento nacional</div>
+      </div>
+
+      </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">Sobre Nós</h2>
+      <div style="display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:start"> <div>
+          <h3>Experiência Imersiva. Segurança Máxima.</h3>
+          <p class="lead">A MAZZO Drones é uma empresa especializada em produção audiovisual com drones, dedicada a transformar ideias em imagens de alto impacto. Nosso foco é ir além das filmagens e captações aéreas tradicionais; nós criamos experiências visuais imersivas, utilizando tecnologia de ponta e domínio cinematográfico para colocar o espectador dentro da ação.</p>
+          <p style="color:rgba(255,255,255,0.85); margin-bottom: 16px;">Entendemos que cada projeto exige uma perspectiva única. Por isso, oferecemos soluções estratégicas e criativas para diversos setores, garantindo sempre a máxima qualidade e segurança em nossas operações.</p>
+          
+          <h4 style="color: var(--orange); margin-bottom: 10px; margin-top: 20px;">Nossos principais serviços incluem:</h4>
+          <ul style="color:rgba(255,255,255,0.8); line-height: 1.6; padding-left: 20px;">
+            <li style="margin-bottom: 8px;"><strong>Produção para Esportes:</strong> Capturamos a adrenalina e a intensidade da ação em cobertura de campeonatos, filmagem de treinos técnicos e produção de conteúdo de engajamento para atletas e marcas.</li>
+            <li style="margin-bottom: 8px;"><strong>Cobertura de Eventos:</strong> Atuamos como parceiros essenciais na produção audiovisual de eventos, fornecendo registros dinâmicos com ângulos exclusivos, filmagem em 4K e capacidade de transmissão ao vivo (live streaming).</li>
+            <li style="margin-bottom: 8px;"><strong>Marketing de Turismo:</strong> Fortalecemos destinos turísticos, hotéis e experiências de viagem com conteúdo aspiracional e imersivo, focado em despertar o desejo do público através de um storytelling envolvente.</li>
+            <li style="margin-bottom: 8px;"><strong>Publicidade e Mídias Sociais:</strong> Entregamos conteúdo estratégico formatado para campanhas de impacto. Produzimos vídeos para campanhas publicitárias e conteúdo otimizado para redes sociais como Instagram, Reels e TikTok.</li>
+          </ul>
+           <p style="color:rgba(255,255,255,0.85); margin-top: 16px;">Nossa equipe é composta por pilotos especialistas e certificados, que operam com total segurança e respeito às normas da ANAC e DECEA. Da concepção do roteiro à pós-produção profissional, a MAZZO Drones é sua parceira para entregar impacto visual e resultados.</p>
+        </div>
+        
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="card"> 
+            <strong>Missão</strong>
+            <p style="margin-top: 8px;">Ser a referência nacional em produção audiovisual imersiva, redefinindo o impacto visual em setores de alto dinamismo como esportes, eventos e turismo. Nossa meta é ir além do tradicional, utilizando tecnologia de ponta para transformar a maneira como o público se conecta com a ação.</p>
+          </div>
+          <div class="card"> 
+            <strong>Valores</strong>
+            <ul style="padding-left: 20px; color: rgba(255,255,255,0.8); font-size: 14px; line-height: 1.5; margin-top: 10px;">
+              <li style="margin-bottom: 8px;"><strong>Segurança Inegociável:</strong> Atuamos com pilotos especialistas e certificados, seguindo rigorosamente todas as normas da ANAC e DECEA. A máxima segurança é η base de todas as nossas operações.</li>
+              <li style="margin-bottom: 8px;"><strong>Inovação e Criatividade:</strong> Buscamos constantemente ir além do óbvio, aplicando domínio cinematográfico e soluções criativas para criar perspectivas únicas e experiências visuais impossíveis de alcançar com métodos tradicionais.</li>
+              <li style="margin-bottom: 8px;"><strong>Impacto e Imersão:</strong> Nosso foco é transformar ideias em imagens de alto impacto. Não apenas registramos momentos, criamos experiências imersivas que capturam a adrenalina e a emoção real, colocando o espectador dentro da ação.</li>
+              <li><strong>Parceria Estratégica:</strong> Em um cenário digital saturado, a produção de vídeo tradicional já não é suficiente para gerar impacto. Compreendemos que os drones são a solução para a falta de diferenciação, permitindo registros dinâmicos que reforçam o valor da marca. Atuamos como parceiros essenciais, entregando conteúdo aéreo com desempenho comprovado, que se traduz em maior valor percebido e um posicionamento de vanguarda para nossos clientes.</li>
+            </ul>
+          </div>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Serviços</h2>
+      <p class="lead">Soluções específicas por vertical — benefícios claros e aplicáveis.</p>
+      <div class="services">
+        <div class="card">
+          <div class="icon">EV</div>
+          <h3>Eventos & Entretenimento</h3>
+          <p>Cobertura 4K para shows, eventos corporativos e festivais — capture a energia do público e imagens para transmissão ao vivo.</p>
+        </div>
+        <div class="card">
+          <div class="icon">TR</div>
+          <h3>Turismo</h3>
+          <p>Storytelling cinematográfico para destinos — videos que despertam desejo de viagem e fortalecem campanhas de turismo.</p>
+        </div>
+        <div class="card">
+          <div class="icon">ES</div>
+          <h3>Esportes</h3>
+          <p>Angulações dinâmicas para capturar velocidade e técnica — material pronto para análise e conteúdo de alto impacto.</p>
+        </div>
+        <div class="card">
+          <div class="icon">AD</div>
+          <h3>Publicidade</h3>
+          <p>Conteúdo otimizado para campanhas digitais com formatos adaptados para social e display.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="container">
+      <h2 class="section-title">Portfólio</h2>
+      <div class="portfolio-controls">
+        <div class="filter-btn" data-filter="all" onclick="filterPortfolio('all')">Todos</div>
+        <div class="filter-btn" data-filter="events" onclick="filterPortfolio('events')">Eventos</div>
+        <div class="filter-btn" data-filter="tourism" onclick="filterPortfolio('tourism')">Turismo</div>
+        <div class="filter-btn" data-filter="sports" onclick="filterPortfolio('sports')">Esportes</div>
+        <div class="filter-btn" data-filter="ads" onclick="filterPortfolio('ads')">Publicidade</div>
+      </div>
+      <div class="grid-portfolio" id="portfolioGrid">
+        <div class="thumb card" data-category="events" onclick="openLightbox('https://www.youtube.com/watch?v=VIDEO_ID')">
+          <img src="/assets/thumb-event.jpg" alt="Cobertura de show MAZZO">
+          <div class="meta">Show — Lembre-se: olhar da pessoa direciona ao CTA</div>
+        </div>
+        <div class="thumb card" data-category="tourism" onclick="openLightbox('https://www.youtube.com/watch?v=VIDEO_ID')">
+          <img src="/assets/thumb-tour.jpg" alt="Tourismo MAZZO">
+          <div class="meta">Destino Turístico</div>
+        </div>
+        <div class="thumb card" data-category="sports" onclick="openLightbox('https://www.youtube.com/watch?v=VIDEO_ID')">
+          <img src="/assets/thumb-sport.jpg" alt="Esportes MAZZO">
+          <div class="meta">Esportes & Ação</div>
+        </div>
+        <div class="thumb card" data-category="ads" onclick="openLightbox('https://www.youtube.com/watch?v=VIDEO_ID')">
+          <img src="/assets/thumb-ads.jpg" alt="Publicidade MAZZO">
+          <div class="meta">Campanha Digital</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="clients">
+    <div class="container">
+      <h2 class="section-title">Clientes & Prova Social</h2>
+      <p class="lead">Parceiros que confiam na MAZZO (Parcerias).</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px">
+        <div style="width:90px;height:40px;background:rgba(255,255,255,0.04);border-radius:8px"></div>
+        <div style="width:90px;height:40px;background:rgba(255,255,255,0.04);border-radius:8px"></div>
+        <div style="width:90px;height:40px;background:rgba(255,255,255,0.04);border-radius:8px"></div>
+      </div>
+
+      <h3 style="margin-top: 24px;">Depoimentos</h3>
+      <div class="testimonials">
+        <div class="testimonial">
+          <strong>"Resultados excepcionais — aumento de engajamento em 58%"</strong>
+          <p style="margin-top:8px">Mariana, Diretora de Marketing — Evento X</p>
+        </div>
+        <div class="testimonial">
+          <strong>"Profissionalismo e segurança em primeiro lugar."</strong>
+          <p style="margin-top:8px">Carlos, Produtor Executivo — Festival Y</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="container">
+      <h2 class="section-title">Planos</h2>
+      <p class="lead">Opções pensadas para reduzir atrito na decisão — escolha a que mais se alinha ao seu objetivo.</p>
+      <div class="pricing">
+        <div class="price-card">
+          <h3>Essencial</h3>
+          <p>Clip 1–2 min | 1 drone | Entrega 7 dias</p>
+          <div style="margin-top:12px"><button class="cta-ghost" onclick="scrollToContact()">Escolher</button></div>
+        </div>
+        <div class="price-card recommended">
+          <h3>Profissional</h3>
+          <p>Clip 3–5 min | 2 drones | Direção de fotografia | Entrega 5 dias</p>
+          <div style="margin-top:12px"><button class="cta-primary" onclick="openDroneVideo()">Mais popular</button></div>
+        </div>
+        <div class="price-card">
+          <h3>Enterprise</h3>
+          <p>Projetos corporativos e transmissão ao vivo | Produção completa</p>
+          <div style="margin-top:12px"><button class="cta-ghost" onclick="scrollToContact()">Fale Conosco</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contato</h2>
+      <div class="contact-grid">
+        <div>
+          <h3>Solicite um orçamento</h3>
+          <p class="lead">Conte-nos sobre seu projeto. Resposta em até 24h.</p>
+          <form id="contactForm" onsubmit="submitForm(event)">
+            <div class="field"><label for="name">Nome</label><input id="name" name="name" required></div>
+            <div class="field"><label for="company">Empresa</label><input id="company" name="company"></div>
+            <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email" required></div>
+            <div class="field"><label for="phone">Telefone</label><input id="phone" name="phone"></div>
+            <div class="field"><label for="message">Projeto</label><textarea id="message" name="message" rows="4" required></textarea></div>
+            <input type="hidden" name="lead_source" value="website" />
+            <button type="submit">Enviar Solicitação</button>
+          </form>
+        </div>
+        <aside>
+          <div class="card">
+            <strong>Contato direto</strong>
+            <p style="margin-top:8px">Email: contato@mazzodrones.com</p>
+            <p style="margin-top:8px">Local: São Paulo — Atendemos nacionalmente</p>
+            
+            <div style="margin-top:12px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+              
+              <a href="https://www.instagram.com/SEU-INSTAGRAM" target="_blank" title="Instagram" style="line-height: 0; padding: 4px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+                <img src="./img/insta.png" alt="Instagram" style="height: 24px; width: 24px; vertical-align: middle;">
+              </a>
+              
+              <a href="https://www.linkedin.com/company/SEU-LINKEDIN" target="_blank" title="LinkedIn" style="line-height: 0; padding: 4px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+                <img src="./img/link.png" alt="LinkedIn" style="height: 24px; width: 24px; vertical-align: middle;">
+              </a>
+
+              <a href="https://wa.me/5511994875959?text=Sua%20mensagem%20de%20boas%20vindas%20aqui." target="_blank" title="WhatsApp" style="line-height: 0; padding: 4px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+                <img src="./img/zap.png" alt="WhatsApp" style="height: 24px; width: 24px; vertical-align: middle;">
+              </a>
+            </div>
+          </div>
+          </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+      <div>© MAZZO Drones — Todos os direitos reservados</div>
+      <div style="display:flex;gap:12px"><a href="#">Política de Privacidade</a><a href="#">Termos</a></div>
+    </div>
+  </footer>
+
+  <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:90;align-items:center;justify-content:center;padding:20px">
+    <div style="max-width:1100px;width:100%;height:90vh;background:#000;border-radius:12px;overflow:hidden;position:relative">
+      <button onclick="closeLightbox()" style="position:absolute;right:12px;top:12px;z-index:99;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.06);border:0;color:#fff; cursor: pointer;">Fechar</button>
+      <iframe id="lightboxFrame" src="" style="width:100%;height:100%;border:0"></iframe>
+    </div>
+  </div>
+
+  <div class="sticky-cta">
+    <button class="cta-primary" onclick="openDroneVideo()">Drones</button>
+  </div>
+
+</main>
+
+<script>
+  // Interatividade JS leve — protótipo
+
+  // Função genérica de scroll adicionada para os links da NAV
+  function scrollToSection(id){
+    document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  
+  // Função mantida para links secundários (Ex: Pricing)
+  function scrollToContact(){
+    document.getElementById('contact').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  // NOVA FUNÇÃO: Para abrir o lightbox com a lista de vídeos de drone
+  function openDroneVideo() {
+    const videoContent = `
+        <!DOCTYPE html>
+        <html lang="pt-BR">
+        <head>
+            <style>
+                body { background: #000; color: white; margin: 0; font-family: Inter, sans-serif; }
+                .video-container { padding: 20px; max-width: 900px; margin: auto; }
+                h3 { color: #FF6A00; margin-top: 0; }
+                video { width: 100%; max-height: 400px; border-radius: 8px; background: #111; display: block; }
+                h4 { margin-top: 20px; margin-bottom: 10px; color: rgba(255,255,255,0.9); }
+                p { color: rgba(255,255,255,0.7); }
+                a { color: #FF6A00; text-decoration: underline; }
+                @media(max-width: 600px) { .video-container { padding: 10px; } }
+            </style>
+        </head>
+        <body>
+            <div class="video-container">
+                <h3>Nossas Produções Aéreas</h3>
+                
+                <div>
+                  <h4>Estrutura de Voo (Estrutura de Voo Drone.mp4)</h4>
+                  <video controls autoplay>
+                    <source src="Estrutura de Voo Drone.mp4" type="video/mp4">
+                    Seu navegador não suporta a tag de vídeo.
+                  </video>
+                </div>
+                
+                <div>
+                  <h4>Drone em Movimento (Vídeo de Drone em Movimento.mp4)</h4>
+                  <video controls style="margin-top: 30px;">
+                    <source src="Vídeo_de_Drone_em_Movimento.mp4" type="video/mp4">
+                    Seu navegador não suporta a tag de vídeo.
+                  </video>
+                </div>
+
+                <p style="text-align: center; margin-top: 30px;">Para mais vídeos, visite nosso <a href="https://www.youtube.com/user/seu-canal" target="_blank">Canal no YouTube</a>!</p>
+            </div>
+        </body>
+        </html>
+    `;
+
+    // 1. Abre o lightbox
+    document.getElementById('lightbox').style.display = 'flex';
+    
+    // 2. Injeta o conteúdo no iframe (usando data URI para carregar o HTML)
+    const dataUri = 'data:text/html;charset=utf-8,' + encodeURIComponent(videoContent);
+    document.getElementById('lightboxFrame').src = dataUri;
+  }
+
+  function openCasebook(){
+    // Implementar: abrir modal, coletar e-mail, ou redirecionar para download
+    alert('Ação: Baixar casebook — substituir por modal real / integração de e-mail.');
+  }
+
+  // Portfolio filter
+  function filterPortfolio(cat){
+    const items = document.querySelectorAll('#portfolioGrid .thumb');
+    items.forEach(i=>{
+      if(cat==='all') i.style.display='block';
+      else i.style.display = (i.dataset.category===cat? 'block' : 'none');
+    });
+  }
+
+  // Lightbox (função original mantida para o portfólio YouTube/Vimeo)
+  function openLightbox(url){
+    document.getElementById('lightboxFrame').src = url.replace('watch?v=', 'embed/');
+    document.getElementById('lightbox').style.display = 'flex';
+  }
+  function closeLightbox(){
+    document.getElementById('lightboxFrame').src = '';
+    document.getElementById('lightbox').style.display = 'none';
+  }
+
+  // Contact form submit (mock)
+  async function submitForm(e){
+    e.preventDefault();
+    const form = document.getElementById('contactForm');
+    const data = new FormData(form);
+    const payload = Object.fromEntries(data.entries());
+    // Mock submission — substituir endpoint real / CRM webhook
+    try{
+      // Simulate fetch
+      await new Promise(r=>setTimeout(r,800));
+      alert('Solicitação enviada — resposta em até 24h.');
+      form.reset();
+    }catch(err){
+      alert('Erro no envio. Tente novamente.');
+    }
+  }
+
+  // Accessibility: close lightbox with ESC
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLightbox(); });
+</script>
+</html>

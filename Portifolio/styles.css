@@ -1,0 +1,150 @@
+:root {
+    /* Cores que você usou: Roxo, Laranja, Preto, Branco */
+    --color-primary-dark: #333; /* Preto para texto e fundo */
+    --color-accent-purple: #7a3bd0; /* Roxo */
+    --color-accent-orange: #f28b2a; /* Laranja */
+    --color-background-light: #f9f9f9; /* Fundo claro */
+    --color-white: #fff;
+    --color-text-light: #666; /* Texto secundário */
+}
+
+/* Reset básico e tipografia */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background-light);
+    color: var(--color-primary-dark);
+}
+
+/* 1. HEADER / BARRA DE NAVEGAÇÃO */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: var(--color-white);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--color-text-light);
+    margin: 0 15px;
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+
+.main-nav a.active {
+    color: var(--color-primary-dark);
+    border-bottom: 2px solid var(--color-accent-orange);
+}
+
+.add-project-btn {
+    background-color: var(--color-accent-purple);
+    color: var(--color-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* 2. CONTEÚDO PRINCIPAL */
+.content-container {
+    display: grid;
+    /* Define 3 colunas: filtros, grid de projetos, sidebar */
+    grid-template-columns: 200px 3fr 1fr; 
+    gap: 30px;
+    padding: 30px 50px;
+    max-width: 1400px; /* Limita a largura do container */
+    margin: 0 auto;
+}
+
+/* Filtros */
+.filters-and-sort {
+    grid-column: 1 / span 1; /* Ocupa a primeira coluna */
+}
+
+.categories {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-btn {
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 10px 0;
+    cursor: pointer;
+    font-size: 15px;
+    color: var(--color-text-light);
+}
+
+.filter-btn.active {
+    color: var(--color-primary-dark);
+    font-weight: bold;
+    /* Estilo do botão 'All' em roxo/laranja */
+    border-left: 3px solid var(--color-accent-purple); 
+    padding-left: 10px;
+}
+
+/* Grid de Projetos */
+.projects-grid {
+    grid-column: 2 / span 1; /* Ocupa a segunda coluna */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background-color: var(--color-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.project-image {
+    height: 200px;
+    background-color: #eee; /* Placeholder */
+    /* Aqui entraria a imagem de fundo ou tag <img> */
+}
+
+.project-title {
+    font-size: 18px;
+    margin: 10px 15px 5px;
+}
+
+.project-author {
+    color: var(--color-text-light);
+    font-size: 14px;
+    margin: 0 15px 10px;
+}
+
+.project-stats {
+    padding: 10px 15px;
+    border-top: 1px solid #eee;
+    font-size: 14px;
+    /* Estilização para os ícones */
+}
+
+/* Sidebar */
+.sidebar {
+    grid-column: 3 / span 1; /* Ocupa a terceira coluna */
+    /* Estilos da sidebar */
+}
+
+.sidebar h4 {
+    margin-top: 0;
+    font-size: 16px;
+    border-bottom: 2px solid var(--color-accent-orange);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+/* Adicione mais estilos para os itens de tendências e follow */
